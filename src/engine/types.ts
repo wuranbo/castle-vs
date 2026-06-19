@@ -90,9 +90,6 @@ export interface GameState {
 export interface Level {
   id: string;
   name: string;
-  rulesVersion: string;
-  /** 预留字段，v1 战斗无随机 */
-  seed: number;
   playerPool: BuildingType[];
   enemyBuildOrder: { atTick: number; building: BuildingType }[];
   hint: string;

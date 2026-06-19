@@ -7,14 +7,12 @@ import { GameLoop } from './loop';
 
 export interface BattleCallbacks {
   onExit: () => void;
-  onFinished: (state: GameState, playerCommands: Command[]) => void;
+  onFinished: (state: GameState) => void;
 }
 
 export class BattleController {
   private state = createBattle();
   private enemyByTick: Map<number, Command[]>;
-  /** 玩家全部操作记录（确定性引擎下即一份完整回放） */
-  private playerCommands: Command[] = [];
   private clickQueue: BuildingType[] = [];
   private loop: GameLoop;
   private ctx: CanvasRenderingContext2D;
@@ -59,7 +57,6 @@ export class BattleController {
     while (this.clickQueue.length > 0) {
       const cmd: Command = { atTick: this.state.tick, side: 'player', building: this.clickQueue.shift()! };
       commands.push(cmd);
-      this.playerCommands.push(cmd);
     }
     step(this.state, commands);
     if (this.state.result !== 'ongoing' && !this.finished) {
@@ -67,7 +64,7 @@ export class BattleController {
       this.loop.stop();
       this.renderFrame();
       // 稍作停顿让玩家看清最后一帧
-      setTimeout(() => this.callbacks.onFinished(this.state, this.playerCommands), 600);
+      setTimeout(() => this.callbacks.onFinished(this.state), 600);
     }
   }
 

@@ -1,4 +1,3 @@
-import { RULES_VERSION } from '../engine/data';
 import type { Level } from '../engine/types';
 
 // atTick 以 20 tick = 1 秒换算。敌方与玩家同规则：
@@ -7,8 +6,6 @@ export const LEVELS: Level[] = [
   {
     id: 'lv1',
     name: '第一关 · 新兵营',
-    rulesVersion: RULES_VERSION,
-    seed: 0,
     playerPool: ['barracks', 'range', 'stable', 'workshop'],
     enemyBuildOrder: [
       { atTick: 0, building: 'barracks' },
@@ -19,8 +16,6 @@ export const LEVELS: Level[] = [
   {
     id: 'lv2',
     name: '第二关 · 箭雨',
-    rulesVersion: RULES_VERSION,
-    seed: 0,
     playerPool: ['barracks', 'range', 'stable', 'workshop'],
     enemyBuildOrder: [
       { atTick: 60, building: 'range' },
@@ -34,8 +29,6 @@ export const LEVELS: Level[] = [
   {
     id: 'lv3',
     name: '第三关 · 铁壁',
-    rulesVersion: RULES_VERSION,
-    seed: 0,
     playerPool: ['barracks', 'range', 'stable', 'workshop'],
     enemyBuildOrder: [
       { atTick: 0, building: 'barracks' },

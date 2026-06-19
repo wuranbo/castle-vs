@@ -1,7 +1,5 @@
 import type { BuildingStats, BuildingType, UnitStats, UnitType } from './types';
 
-export const RULES_VERSION = '0.1.0';
-
 export const TICKS_PER_SEC = 20;
 export const BATTLE_DURATION_TICKS = 180 * TICKS_PER_SEC;
 
